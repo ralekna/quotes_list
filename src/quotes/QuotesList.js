@@ -7,9 +7,10 @@ define('quotes/QuotesList', ['jquery'], function($) {
             '<ul></ul>'   +
         '</div>';
 
-    function QuotesList(element) {
+    function QuotesList(element, quotes_url) {
         // let's not have anything important here
         this.element    = element;
+        this.quotes_url = quotes_url;
         this.init();
     }
 
@@ -27,6 +28,7 @@ define('quotes/QuotesList', ['jquery'], function($) {
         // and extract it's parts
         this.$blockquote    = this.$component.find('blockquote');
         this.$list          = this.$component.find('ul');
+
     };
 
     return QuotesList;
