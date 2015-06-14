@@ -1,0 +1,14 @@
+{
+  "name": "quotes_list",
+  "version": "1.0.0",
+  "description": "Example project using OOP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rytis Alekna",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
