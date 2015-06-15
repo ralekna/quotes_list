@@ -1,11 +1,12 @@
-define('quotes/QuotesList', ['jquery'], function($) {
+define(function QuotesListMetaClass(require) {
 
-    // Here we define templates for our component parts
-    // Do not use any id's and minimize usage of classes
-    var body_template = '<div class="quotes_list">' +
-            '<blockquote></blockquote>'     +
-            '<ul></ul>'   +
-        '</div>';
+    // imports
+    var $             = require('jquery');
+    var AjaxService   = require('app/service/AjaxService');
+    var bodyTemplate = require('tpl!templates/QuotesList.tpl');
+
+
+    var single_quote_template = '<li>{{ quote.text }}</li>';
 
     function QuotesList(element, quotes_url) {
         // let's not have anything important here
@@ -23,12 +24,13 @@ define('quotes/QuotesList', ['jquery'], function($) {
     QuotesList.prototype.init = function() {
 
         // Create a jQuery object from component template
-        this.$component     = $(body_template);
+        this.$component     = $(bodyTemplate());
 
         // and extract it's parts
         this.$blockquote    = this.$component.find('blockquote');
         this.$list          = this.$component.find('ul');
-
+        console.log(bodyTemplate());
+        debugger;
     };
 
     return QuotesList;

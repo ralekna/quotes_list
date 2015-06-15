@@ -1,9 +1,9 @@
-define('service/AjaxService', ['jquery'], function($) {
+define(['jquery'], function($) {
 
     function AjaxService() {}
 
     function fetch(url, callback) {
-        $.ajax(url).then(callback).fail(onFail);
+        $.ajax(url).done(callback).fail(onFail);
     }
 
     function onFail(error) {
