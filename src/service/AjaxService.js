@@ -3,9 +3,14 @@ define(['jquery'], function($) {
     function AjaxService() {}
 
     function fetch(url, callback) {
-        $.ajax(url).done(callback).fail(onFail);
+        var promise = $.ajax(url).fail(onFail);
+        if (callback) {
+            promise.done(callback);
+        }
+        return promise;
     }
 
+    // we delegate error handling here
     function onFail(error) {
         console.log(error);
     }

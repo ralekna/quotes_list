@@ -3,7 +3,8 @@ define(function QuotesListMetaClass(require) {
     // imports
     var $             = require('jquery');
     var AjaxService   = require('app/service/AjaxService');
-    var bodyTemplate = require('tpl!templates/QuotesList.tpl');
+    var bodyTemplate  = require('tpl!templates/QuotesList.tpl');
+    var quoteTemplate = require('tpl!templates/SingleQuote.tpl');
 
 
     var single_quote_template = '<li>{{ quote.text }}</li>';
@@ -29,9 +30,19 @@ define(function QuotesListMetaClass(require) {
         // and extract it's parts
         this.$blockquote    = this.$component.find('blockquote');
         this.$list          = this.$component.find('ul');
-        console.log(bodyTemplate());
-        debugger;
+
+        AjaxService.fetch(this.quotes_url).done($.proxy(function handleQuotesData(data) {
+            addQuotesToList(this.$list, data, quoteTemplate);
+        }, this));
+
+        this.$component.appendTo(this.element);
     };
+
+    function addQuotesToList($list, quotes_data, quote_template) {
+        $(quotes_data).map(function mapJsonToJQuery() {
+            return $(quote_template(this));
+        }).appendTo($list);
+    }
 
     return QuotesList;
 
