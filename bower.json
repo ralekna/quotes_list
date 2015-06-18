@@ -21,6 +21,6 @@
     "requirejs": "~2.1.18",
     "requirejs-text": "~2.0.14",
     "underscore": "~1.8.3",
-    "requirejs-underscore-tpl": "*"
+    "requirejs-underscore-tpl": "ralekna/requirejs-underscore-tpl"
   }
 }
